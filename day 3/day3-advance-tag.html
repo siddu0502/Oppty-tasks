@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="An example of advanced HTML tags including video, audio, canvas, and more.">
+    <meta name="keywords" content="HTML, video, audio, canvas, advanced tags, web development">
+    <meta name="author" content="Your Name">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <script src="script.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <title>Advanced HTML Tags Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0px;
+            font-size: 18px;
+
+        }
+        video, audio, canvas {
+            display: block;
+            margin-bottom: 20px;
+        }
+        figure {
+            margin: 20px 0;
+        }
+        blockquote {
+            border-left: 4px solid #ccc;
+            padding-left: 20px;
+            margin: 20px 0;
+        }
+        h1{
+            color: #fff;
+            background-color: #000;
+            background-image: url('background.jpg');
+            background-position: center center;
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            opacity: 1;
+        }
+        h2{
+                font-family: "Roboto", sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 30px;
+    text-align: center;
+    text-decoration: underline;
+    letter-spacing: 1px;
+    word-spacing: 5px;
+        }
+        .content{
+                width: 300px;
+    height: 100px;
+    margin: 20px;
+    padding: 20px;
+    /* border: 1px solid #000; */
+    border-width: 1px;
+    border-color: #000;
+    border-style: solid;
+    box-shadow: 3px 4px 7px 0px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+    <script>
+        // Example script to demonstrate JavaScript functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Document is ready!');
+        });
+    </script>
+</head>
+
+<body>
+    <h1>Advanced HTML Tags Example</h1>
+    <h2>Video and Audio ElementsVideo and Audio ElementsVideo and Audio ElementsVideo and Audio ElementsVideo and Audio ElementsVideo and Audio ElementsVideo and Audio ElementsVideo and Audio ElementsVideo and Audio ElementsVideo and Audio Elements</h2>
+    <div class="content">
+        <p>This page demonstrates various advanced HTML tags including video, audio, canvas, and more.</p>
+    </div>
+    <video>
+        <source src="video.mp4" type="video/mp4">Your browser does not support the video tag.
+    </video>
+    <audio controls>
+        <source src="audio.mp3" type="audio/mpeg">Your browser does not support the audio element.
+    </audio>
+    <details>
+        <summary>More Information</summary>
+        <p>This section contains additional details about the video and audio files.</p>
+    </details>
+    <progress value="50" max="100">50% completed</progress>
+    <meter value="0.7" min="0" max="1">70% filled</meter>
+    <figure>
+        <img src="image.jpg" alt="An example image">
+        <figcaption>An example image with a caption.</figcaption>
+    </figure>
+    <blockquote cite="https://example.com">
+        <p>"This is a blockquote that references an external source.</p>
+    </blockquote>
+    <time datetime="2025-08-19">August 19, 2025</time>
+    <mark>This text is highlighted to indicate importance.</mark>
+    <address>
+        <p>Contact us at: <a href="mailto:example@gmail.com">example@gmail.com</a></p>
+        <p>Visit us at: <a href="https://example.com">example.com</a></p>
+    </address>
+    <template id="myTemplate">
+        <p>This is a template that can be cloned and used in the document.</p>
+    </template>
+    <dialog open>
+        <p>This is a dialog box that can be used for user interactions.</p>
+        <button onclick="this.parentElement.close()">Close</button>
+    </dialog>
+    
+    <img src="file-file-type-svgrepo-com.svg" alt="An example image in PNG format" width="200" height="100">
+    <svg xmlns="http://www.w3.org/2000/svg" width="100px" height="100px" viewBox="0 0 400 400">
+
+        <defs>
+
+            <style>
+                .cls-1 {
+                    fill: #101010;
+                }
+            </style>
+
+        </defs>
+
+        <title />
+
+        <g id="xxx-file">
+
+            <path class="cls-1" d="M325,105H250a5,5,0,0,1-5-5V25a5,5,0,0,1,10,0V95h70a5,5,0,0,1,0,10Z" />
+
+            <path class="cls-1"
+                d="M300,380H100a30,30,0,0,1-30-30V50a30,30,0,0,1,30-30H250a5,5,0,0,1,3.54,1.46l75,75A5,5,0,0,1,330,100V350A30,30,0,0,1,300,380ZM100,30A20,20,0,0,0,80,50V350a20,20,0,0,0,20,20H300a20,20,0,0,0,20-20V102.07L247.93,30Z" />
+
+            <path class="cls-1" d="M275,180H125a5,5,0,0,1,0-10H275a5,5,0,0,1,0,10Z" />
+
+            <path class="cls-1" d="M275,230H125a5,5,0,0,1,0-10H275a5,5,0,0,1,0,10Z" />
+
+            <path class="cls-1" d="M275,280H125a5,5,0,0,1,0-10H275a5,5,0,0,1,0,10Z" />
+
+            <path class="cls-1" d="M200,330H125a5,5,0,0,1,0-10h75a5,5,0,0,1,0,10Z" />
+
+        </g>
+
+    </svg>
+    <fieldset>
+        <legend>Fieldset Example</legend>
+        <p>This is an example of a fieldset with a legend.</p>
+        <label for="inputExample">Input Example:</label>
+        <input type="text" id="inputExample" name="inputExample" placeholder="Type something here...">
+        <button type="submit">Submit</button>
+    </fieldset>
+    <noscript>
+        <p>This content is displayed if JavaScript is disabled in the browser.</p>
+    </noscript>
+    <object data="example.pdf" type="application/pdf" width="600" height="400">
+        <p>Your browser does not support PDFs. <a href="example.pdf">Download the PDF</a>.</p>  
+    </object>
+     <canvas id="myCanvas" width="400" height="300" style="border:1px solid #000;"></canvas>
+
+  <script>
+    // Get the canvas context (2D rendering)
+    let canvas = document.getElementById("myCanvas");
+    let ctx = canvas.getContext("2d");
+
+    // Draw a filled rectangle
+    ctx.fillStyle = "skyblue";
+    ctx.fillRect(50, 50, 120, 80);
+
+    // Draw a rectangle border
+    ctx.strokeStyle = "red";
+    ctx.lineWidth = 3;
+    ctx.strokeRect(200, 50, 120, 80);
+
+    // Draw a circle
+    ctx.beginPath();
+    ctx.arc(200, 200, 50, 0, 2 * Math.PI); // x=200, y=200, radius=50
+    ctx.fillStyle = "lightgreen";
+    ctx.fill();
+    ctx.stroke();
+  </script>
+</body>
+
+</html>

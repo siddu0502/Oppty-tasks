@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Form Validation & Image Slider</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; background: #f5f5f5; }
+    section { background: white; padding: 20px; margin-bottom: 40px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+    h2 { margin-top: 0; }
+    input { padding: 8px; margin: 5px 0; width: 250px; }
+    button { padding: 8px 14px; margin-top: 10px; cursor: pointer; border: none; border-radius: 5px; background: #007BFF; color: white; }
+    button:hover { background: #0056b3; }
+    .error { color: red; font-size: 14px; display: none; }
+    .success { color: green; font-size: 14px; display: none; }
+
+    
+    .slider { display: flex; flex-direction: column; align-items: center; }
+    .slider img { width: 300px; height: 200px; object-fit: cover; border-radius: 8px; }
+    .controls { margin-top: 15px; }
+    .controls button { margin: 0 10px; }
+  </style>
+</head>
+<body>
+
+  
+  <section>
+    <h2>Form Validation (Email Check)</h2>
+    <form id="myForm">
+      <label for="email">Enter Email:</label><br>
+      <input type="text" id="email" placeholder="example@mail.com"><br>
+      <span id="errorMsg" class="error">❌ Please enter a valid email.</span>
+      <span id="successMsg" class="success">✅ Email looks good!</span><br>
+      <button type="submit">Submit</button>
+    </form>
+  </section>
+
+  
+  <section>
+    <h2>Image Slider</h2>
+    <div class="slider">
+      <img id="sliderImage" src="https://picsum.photos/id/1015/600/400" alt="slider image">
+      <div class="controls">
+        <button id="prevBtn">Previous</button>
+        <button id="nextBtn">Next</button>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    
+    const form = document.getElementById("myForm");
+    const emailInput = document.getElementById("email");
+    const errorMsg = document.getElementById("errorMsg");
+    const successMsg = document.getElementById("successMsg");
+
+    form.addEventListener("submit", function(e) {
+      e.preventDefault(); 
+      const emailValue = emailInput.value.trim();
+
+      
+      const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+      if (emailValue.match(emailPattern)) {
+        errorMsg.style.display = "none";
+        successMsg.style.display = "inline";
+      } else {
+        successMsg.style.display = "none";
+        errorMsg.style.display = "inline";
+      }
+    });
+
+    
+    const images = [
+      "https://picsum.photos/id/1015/600/400",
+      "https://picsum.photos/id/1025/600/400",
+      "https://picsum.photos/id/1035/600/400",
+      "https://picsum.photos/id/1045/600/400"
+    ];
+
+    let currentIndex = 0;
+    const sliderImage = document.getElementById("sliderImage");
+
+    document.getElementById("nextBtn").addEventListener("click", function() {
+      currentIndex++;
+      if (currentIndex >= images.length) currentIndex = 0;
+      sliderImage.src = images[currentIndex];
+    });
+
+    document.getElementById("prevBtn").addEventListener("click", function() {
+      currentIndex--;
+      if (currentIndex < 0) currentIndex = images.length - 1;
+      sliderImage.src = images[currentIndex];
+    });
+  </script>
+
+</body>
+</html>

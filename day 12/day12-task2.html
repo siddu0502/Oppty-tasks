@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day & Night Theme Switcher</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      transition: background 0.5s, color 0.5s;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    
+    .day {
+      background: white;
+      color: black;
+    }
+    .day button {
+      background: black;
+      color: white;
+    }
+
+   
+    .night {
+      background: black;
+      color: white;
+    }
+    .night button {
+      background: white;
+      color: black;
+    }
+  </style>
+</head>
+<body class="day">
+  <h1 id="message">Good Morning! It's Day Mode 🌞</h1>
+  <button id="toggleBtn">Switch to Night Mode</button>
+
+  <script>
+    const body = document.body;
+    const message = document.getElementById("message");
+    const toggleBtn = document.getElementById("toggleBtn");
+
+    toggleBtn.addEventListener("click", () => {
+      if (body.classList.contains("day")) {
+        
+        body.classList.remove("day");
+        body.classList.add("night");
+        message.textContent = "Good Night! It's Night Mode 🌙";
+        toggleBtn.textContent = "Switch to Day Mode";
+      } else {
+        
+        body.classList.remove("night");
+        body.classList.add("day");
+        message.textContent = "Good Morning! It's Day Mode 🌞";
+        toggleBtn.textContent = "Switch to Night Mode";
+      }
+    });
+  </script>
+</body>
+</html>

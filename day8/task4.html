@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Restaurant Order Validator</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    .card { max-width: 420px; margin:auto; padding: 18px; border:1px solid #ccc; border-radius:8px; }
+    .row { margin:10px 0; }
+    button { padding:8px 14px; margin-top:10px; cursor:pointer; }
+    .result { margin-top:12px; padding:10px; border-radius:6px; }
+    .ok { background:#e6ffed; border:1px solid #bdeec4; }
+    .no { background:#fff2f2; border:1px solid #f1c2c2; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Restaurant Order Validator</h2>
+    
+    <div class="row">
+      <input type="checkbox" id="isOpen">
+      <label for="isOpen">Kitchen is Open</label>
+    </div>
+    
+    <div class="row">
+      <input type="checkbox" id="isLoggedIn">
+      <label for="isLoggedIn">Customer Logged In</label>
+    </div>
+    
+    <div class="row">
+      <input type="checkbox" id="isVIP">
+      <label for="isVIP">VIP Customer</label>
+    </div>
+    
+    <button onclick="checkOrder()">Check Order</button>
+    <div id="output" class="result"></div>
+  </div>
+
+  <script>
+    function checkOrder() {
+      const isOpen = document.getElementById('isOpen').checked;
+      const isLoggedIn = document.getElementById('isLoggedIn').checked;
+      const isVIP = document.getElementById('isVIP').checked;
+      const out = document.getElementById('output');
+      
+      let accepted = false;
+
+      if (isOpen && isLoggedIn && !isVIP) {
+        accepted = true;
+      }
+
+      if (accepted) {
+        out.className = "result ok";
+        out.textContent = "Order Accepted ✅";
+      } else {
+        out.className = "result no";
+        out.textContent = "Order Rejected ❌";
+      }
+    }
+  </script>
+</body>
+</html>

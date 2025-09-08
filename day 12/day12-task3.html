@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dice Roller Simulator</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      transition: background 0.5s ease;
+      background: #f4f4f4;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    #result {
+      font-size: 40px;
+      margin: 20px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 18px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      background: #333;
+      color: white;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background: #555;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎲 Dice Roller Simulator 🎲</h1>
+  <div id="result">Click Roll!</div>
+  <button id="rollBtn">Roll Dice</button>
+
+  <script>
+    const rollBtn = document.getElementById("rollBtn");
+    const result = document.getElementById("result");
+
+    const diceEmojis = ["⚀","⚁","⚂","⚃","⚄","⚅"]; 
+
+    rollBtn.addEventListener("click", () => {
+      const number = Math.floor(Math.random() * 6) + 1; 
+      result.textContent = `You rolled: ${number} ${diceEmojis[number-1]}`;
+
+      
+      if (number <= 2) {
+        document.body.style.background = "red";
+      } else if (number <= 4) {
+        document.body.style.background = "yellow";
+      } else {
+        document.body.style.background = "green";
+      }
+    });
+  </script>
+</body>
+</html>

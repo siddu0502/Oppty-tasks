@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Access Control</title>
+</head>
+<body>
+  <h2>Access Control System</h2>
+
+  <label><input type="checkbox" id="isLoggedIn"> Logged In</label><br>
+  <label><input type="checkbox" id="isAdmin"> Admin</label><br>
+  <label><input type="checkbox" id="hasPass"> Has Special Pass</label><br><br>
+
+  <button onclick="checkAccess()">Check Access</button>
+
+  <p id="result"></p>
+
+  <script>
+    function checkAccess() {
+      const isLoggedIn = document.getElementById("isLoggedIn").checked;
+      const isAdmin = document.getElementById("isAdmin").checked;
+      const hasPass = document.getElementById("hasPass").checked;
+
+      if (isLoggedIn && (isAdmin || hasPass)) {
+        document.getElementById("result").textContent = "Access Granted";
+      } else {
+        document.getElementById("result").textContent = "Access Denied";
+      }
+    }
+  </script>
+</body>
+</html>

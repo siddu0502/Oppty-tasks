@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF=8">
+    <title>Origins 2025 </title>
+</head>
+<body>
+    <header>
+        <h1>Origins 2025</h1>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#register">register</a>
+        </nav>
+    </header>
+    <main>
+        <section id="about">
+            <h2>Theme of Origins</h2>
+        <article> 
+            <p> Visit our origins at <time date time= "05/02/2025">Febuary 05,2025</time>Exhibit.</p>
+            <video contols width="400">
+                 <source src="https://youtu.be/ehV-MmuvVMU?si=pruKt5y9EUXXe2pg.mp4" type="video/mp4">
+                <track src="https://gist.githubusercontent.com/samdutton/ca37f3adaf4e23679957b8083e061177/raw/sample.vtt" kind="subtitles" srclang="en" label="English">
+            </video>
+
+            <figure>
+               <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='100'%3E%3Ctext x='100' y='50' text-anchor='middle'%3EMuseum%3C/text%3E%3C/svg%3E" alt="Museum logo">
+                    <figcaption>Our Musueum logo</figcaption>
+            </figure>
+        </article>
+
+        <aside> 
+            <h3> FAQ</h3>
+            <details> 
+                <summary> Visiting time?</summary>
+                <p>From monday to friday 9 AM to 6 PM </p>
+            </details>
+        </aside>
+        </section> 
+
+        <section id="register">
+            <h2> Register</h2>
+            <form>
+                <fieldset>
+                    <legend>Your Name</legend>
+                    <label> Email: <input type = "email" required></label><br>
+                    <label> Visitors:<input type ="number" min ='1' max="10" value="1"> </label><br>
+                    <label> Date: <input type="date"></label><br>
+                    <label> Color:<input type="color" value="#8B4513"></label><br>
+                </fieldset>
+
+                <label> Interest:
+                    <input list="interests">
+                    <datalist id="interests">
+                        <option value="History">
+                        <option value="science">
+                    </datalist>
+                </label>
+                <p>Progress: <progress value="65" max="100">65%</progress> </p>
+                <button type="Submit">Submit</button>
+            </form>    
+        </section>
+    </main>
+    <dialog id="rules">
+        <h3>Visitors Rules</h3>
+        <p> watch out for your own belongings and have a grate day at out museum</p>
+        <button onlick="rules.close()">Close</button>
+    </dialog>
+    <footer>
+        <address>
+            <p>Contact: <a href="siddubhandeakr619@gmail.com">our@museum.org</a></p>
+        </address>
+    </footer>
+    <button onclick="rules.showmodal()">show rules and regulations</button>
+</body>
+</html>
+

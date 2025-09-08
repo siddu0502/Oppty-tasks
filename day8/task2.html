@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Shopping Discount Checker</title>
+</head>
+<body>
+  <h2>Shopping Discount Checker</h2>
+
+  <label>
+    <input type="checkbox" id="isPremium"> Premium Member
+  </label>
+  <br><br>
+
+  <label>
+    Cart Value: <input type="number" id="cartValue" value="0">
+  </label>
+  <br><br>
+
+  <button onclick="checkDiscount()">Check Discount</button>
+
+  <p id="result"></p>
+
+  <script>
+    function checkDiscount() {
+      const isPremium = document.getElementById("isPremium").checked;
+      const cartValue = parseFloat(document.getElementById("cartValue").value);
+
+      let message = "No Discount";
+
+      if (cartValue > 0 && (isPremium || cartValue > 500)) {
+        message = "Discount Applied!";
+      }
+
+      document.getElementById("result").textContent = message;
+    }
+  </script>
+</body>
+</html>

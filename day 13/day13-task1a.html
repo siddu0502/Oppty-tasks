@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OTP Generator</title>
+</head>
+<body>
+  <h1>OTP Generator</h1>
+  <button onclick="generateNumericOTP()">Generate Numeric OTP</button>
+  <p id="numericOtp"></p>
+
+  <script>
+    function generateNumericOTP() {
+      let otp = "";
+      for (let i = 0; i < 6; i++) {
+        otp += Math.floor(Math.random() * 10); // digits 0–9
+      }
+      document.getElementById("numericOtp").textContent = "Your OTP: " + otp;
+    }
+  </script>
+</body>
+</html>

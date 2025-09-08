@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compound Interest Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background: #f4f4f4;
+      margin: 0;
+    }
+    input, button {
+      margin: 8px;
+      padding: 10px;
+      font-size: 16px;
+    }
+    #result {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>💰 Compound Interest Calculator</h1>
+
+  <input type="number" id="principal" placeholder="Principal (P)" step="0.01">
+  <input type="number" id="rate" placeholder="Annual Rate (%)" step="0.01">
+  <input type="number" id="time" placeholder="Time (Years)" step="0.1">
+  <input type="number" id="frequency" placeholder="Compounds per Year (n)" step="1">
+
+  <button onclick="calculateCI()">Calculate</button>
+  <p id="result"></p>
+
+  <script>
+    function calculateCI() {
+      const P = parseFloat(document.getElementById("principal").value);
+      const r = parseFloat(document.getElementById("rate").value) / 100;
+      const t = parseFloat(document.getElementById("time").value);
+      const n = parseInt(document.getElementById("frequency").value);
+
+      const result = document.getElementById("result");
+
+      if (!P || !r || !t || !n) {
+        result.textContent = "⚠️ Please fill all fields correctly.";
+        return;
+      }
+
+      
+      const A = P * Math.pow(1 + r / n, n * t);
+      const interest = A - P;
+
+      result.textContent = `Total Amount: ₹${A.toFixed(2)} | Interest: ₹${interest.toFixed(2)}`;
+    }
+  </script>
+</body>
+</html>

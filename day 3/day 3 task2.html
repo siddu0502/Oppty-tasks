@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fly Sign-Up</title>
+    <style>
+        body {
+            display: flex;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(to right, rgb(6, 6, 7), rgb(111, 59, 111));
+            font-family: Arial, sans-serif;
+        }
+        .left {
+            flex: 1;
+            color: rgb(85, 22, 22);
+            padding: 50px;
+        }
+        .right {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .form-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(123, 99, 99, 0.1);
+            width: 300px;
+        }
+        button {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .see-pricing {
+            background-color: green;
+            color: white;
+            margin-top: 20px;
+        }
+        .register {
+            background-color: rgb(185, 21, 54);
+            color: rgb(38, 10, 10);
+            width: 100%;
+            margin-top: 10px;
+        }
+        button:hover {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="left">
+        <h1>Fly makes you faster.</h1>
+        <p>New free template by <a href="https://example.com" style="color: white;">uicookies.com</a>. For more templates visit the site.</p>
+        <button class="view pricing">See Pricing</button>
+    </div>
+    <div class="right">
+        <div class="form">
+            <h2>Sign Up for Free</h2>
+            <form>
+                <input type="text" placeholder="Full name" required><br><br>
+                <input type="email" placeholder="Email" required><br><br>
+               
+                <select required>
+                    <option value="" disabled selected>Select Type</option>
+                    <option value="type1">Type 1</option>
+                    <option value="type2">Type 2</option>
+                    <option value="type3">Type 3</option>
+                </select><br><br>
+                <button type="submit" class="register">Register</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

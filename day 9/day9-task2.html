@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Shopping Cart</title>
+</head>
+<body>
+  <h2>Shopping Cart </h2>
+
+  <p>Enter prices:</p>
+  <input type="text" id="cart" value=" ">
+
+  <p>Customer Type:</p>
+  <select id="customerType">
+    <option value="Normal">Normal</option>
+    <option value="Premium">Premium</option>
+  </select>
+
+  <button onclick="calculateTotal()">Calculate</button>
+
+  <p id="result"></p>
+
+  <script>
+    function calculateTotal() {
+      let cartInput = document.getElementById("cart").value;
+      let customerType = document.getElementById("customerType").value;
+
+      // convert to numbers
+      let cart = cartInput.split(",").map(Number);
+      let total = cart.reduce((a,b) => a+b, 0);
+
+      let discount = 0;
+      if (customerType === "Premium") {
+        discount = 0.30;
+      } else if (total > 1000) {
+        discount = 0.20;
+      } else if (total > 500) {
+        discount = 0.10;
+      }
+
+      let finalAmount = total - (total * discount);
+
+      document.getElementById("result").innerText =
+        "Total: " + total + " | Final Price: " + finalAmount;
+    }
+  </script>
+</body>
+</html>

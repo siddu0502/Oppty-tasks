@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Admin Dashboard</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", sans-serif;
+    }
+    body {
+      display: flex;
+      min-height: 100vh;
+      background: #f5f6fa;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 220px;
+      background: linear-gradient(180deg, #7b2ff7, #f107a3);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 20px 0;
+    }
+    .sidebar h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 20px;
+    }
+    .sidebar a {
+      text-decoration: none;
+      color: white;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      transition: 0.3s;
+    }
+    .sidebar a:hover {
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 8px;
+    }
+    .sidebar a i {
+      margin-right: 10px;
+    }
+    .bottom-links {
+      margin-top: auto;
+    }
+
+    /* Main Content */
+    .main {
+      flex: 1;
+      padding: 20px;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .header h1 {
+      font-size: 26px;
+      color: #333;
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    .card i {
+      font-size: 30px;
+    }
+    .card h3 {
+      margin-bottom: 5px;
+      color: #555;
+    }
+    .card p {
+      font-size: 18px;
+      font-weight: bold;
+      color: #111;
+    }
+
+    /* Different colors for cards */
+    .users i { color: #00c9ff; }
+    .orders i { color: #ff7eb3; }
+    .revenue i { color: #00d26a; }
+    .messages i { color: #ffb400; }
+
+    /* Table */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    table th, table td {
+      padding: 12px 15px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+    table th {
+      background: #7b2ff7;
+      color: white;
+    }
+    table tr:hover {
+      background: #fef3ff;
+    }
+    .status {
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 12px;
+      font-weight: bold;
+      color: white;
+    }
+    .published { background: #28a745; }
+    .draft { background: #ffc107; }
+    .archived { background: #dc3545; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .sidebar {
+        width: 60px;
+      }
+      .sidebar h2, .sidebar a span {
+        display: none;
+      }
+      .sidebar a i {
+        margin: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div>
+      <h2><i class="fas fa-bars"></i> Menu</h2>
+      <a href="#"><i class="fas fa-tachometer-alt"></i><span> Dashboard</span></a>
+    </div>
+    <div class="bottom-links">
+      <a href="#"><i class="fas fa-sign-out-alt"></i><span> Logout</span></a>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main">
+    <div class="header">
+      <h1>Dashboard</h1>
+      <input type="text" placeholder="Search..." style="padding:8px;border-radius:8px;border:1px solid #ccc;">
+    </div>
+
+    <!-- Cards -->
+    <div class="cards">
+      <div class="card users">
+        <div>
+          <h3>Users</h3>
+          <p>12,540</p>
+        </div>
+        <i class="fas fa-users"></i>
+      </div>
+      <div class="card orders">
+        <div>
+          <h3>Orders</h3>
+          <p>7,820</p>
+        </div>
+        <i class="fas fa-shopping-cart"></i>
+      </div>
+      <div class="card revenue">
+        <div>
+          <h3>Revenue</h3>
+          <p>$54,200</p>
+        </div>
+        <i class="fas fa-dollar-sign"></i>
+      </div>
+      <div class="card messages">
+        <div>
+          <h3>Messages</h3>
+          <p>320</p>
+        </div>
+        <i class="fas fa-envelope"></i>
+      </div>
+    </div>
+
+    <!-- Table -->
+    <table>
+      <thead>
+        <tr>
+          <th>Article</th>
+          <th>Views</th>
+          <th>Comments</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Article 110</td><td>6.1k</td><td>410</td><td><span class="status published">Published</span></td></tr>
+        <tr><td>Article 109</td><td>5.9k</td><td>350</td><td><span class="status draft">Draft</span></td></tr>
+        <tr><td>Article 108</td><td>4.8k</td><td>220</td><td><span class="status published">Published</span></td></tr>
+        <tr><td>Article 107</td><td>3.4k</td><td>190</td><td><span class="status archived">Archived</span></td></tr>
+        <tr><td>Article 106</td><td>5.2k</td><td>270</td><td><span class="status published">Published</span></td></tr>
+        <tr><td>Article 105</td><td>2.9k</td><td>120</td><td><span class="status draft">Draft</span></td></tr>
+        <tr><td>Article 104</td><td>4.2k</td><td>310</td><td><span class="status published">Published</span></td></tr>
+        <tr><td>Article 103</td><td>1.8k</td><td>90</td><td><span class="status archived">Archived</span></td></tr>
+        <tr><td>Article 102</td><td>3.6k</td><td>150</td><td><span class="status draft">Draft</span></td></tr>
+        <tr><td>Article 101</td><td>5.0k</td><td>320</td><td><span class="status published">Published</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

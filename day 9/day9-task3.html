@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Student Report Generator</title>
+</head>
+<body>
+  <h2>Student Report Generator</h2>
+  <button onclick="generateAllReports()">Generate Reports</button>
+  <div id="output"></div>
+
+  <script>
+    // 10 Students
+    let students = [
+      { name: "Siddu", marks: { math: 100, science: 99, english: 98 } },
+      { name: "Kalyan",  marks: { math: 95, science: 89, english: 91 } },
+      { name: "Akhila",  marks: { math: 70, science: 65, english: 60 } },
+      { name: "Anu",  marks: { math: 45, science: 55, english: 50 } },
+      { name: "Anil",  marks: { math: 88, science: 90, english: 85 } },
+      { name: "Sunil",  marks: { math: 76, science: 80, english: 79 } },
+      { name: "Vinil", marks: { math: 90, science: 80, english: 70 } },
+      { name: "Adithya",   marks: { math: 79, science: 50, english: 60 } },
+      { name: "Abhi",  marks: { math: 34, science: 35, english: 36 } },
+      { name: "Munna",  marks: { math: 82, science: 78, english: 80 } }
+    ];
+
+    // Function to generate a single report
+    function generateReport(student) {
+      let marks = student.marks;
+      let total = 0, count = 0;
+
+      for (let subject in marks) {
+        total += marks[subject];
+        count++;
+      }
+
+      let avg = total / count;
+      let grade;
+
+      if (avg >= 90) grade = "A";
+      else if (avg >= 75) grade = "B";
+      else if (avg >= 50) grade = "C";
+      else grade = "Fail";
+
+      return {
+        name: student.name,
+        average: avg.toFixed(2),
+        grade: grade
+      };
+    }
+
+    // Function to generate reports for all students
+    function generateAllReports() {
+      let output = "<table><tr><th>Name</th><th>Average</th><th>Grade</th></tr>";
+
+      for (let i = 0; i < students.length; i++) {
+        let report = generateReport(students[i]);
+        output += `<tr>
+                     <td>${report.name}</td>
+                     <td>${report.average}</td>
+                     <td>${report.grade}</td>
+                   </tr>`;
+      }
+
+      output += "</table>";
+      document.getElementById("output").innerHTML = output;
+    }
+  </script>
+</body>
+</html>

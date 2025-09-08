@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Exam Eligibility Checker</title>
+  <style>
+    body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial; padding: 24px; }
+    .card { max-width:420px; margin:0 auto; padding:18px; border:1px solid #ddd; border-radius:8px; }
+    label { display:block; margin:10px 0 6px; font-weight:600; }
+    input[type="number"] { width:100%; padding:8px; box-sizing:border-box; }
+    .row { display:flex; gap:12px; align-items:center; margin:8px 0; }
+    button { margin-top:12px; padding:10px 14px; cursor:pointer; }
+    .result { margin-top:14px; padding:10px; border-radius:6px; }
+    .ok { background:#e6ffed; border:1px solid #bdeec4; }
+    .no { background:#fff2f2; border:1px solid #f1c2c2; }
+    small { color:#666; display:block; margin-top:6px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Exam Eligibility Checker</h2>
+
+    <label for="attendance">Attendance (%)</label>
+    <input id="attendance" type="number" min="0" max="100" value="80" />
+
+    <div class="row">
+      <input id="medical" type="checkbox" />
+      <label for="medical" style="margin:0; font-weight:normal;">Has medical certificate (relaxes attendance)</label>
+    </div>
+
+    <div class="row">
+      <input id="sports" type="checkbox" />
+      <label for="sports" style="margin:0; font-weight:normal;">Is sports player (relaxes attendance)</label>
+    </div>
+
+    <button id="check">Check Eligibility</button>
+
+    <div id="output" class="result" aria-live="polite"></div>
+
+    <small>Rule: Eligible if attendance ≥ 75 OR has medical certificate OR is sports player.</small>
+  </div>
+
+  <script>
+    const attendanceInput = document.getElementById('attendance');
+    const medicalInput = document.getElementById('medical');
+    const sportsInput = document.getElementById('sports');
+    const out = document.getElementById('output');
+    const btn = document.getElementById('check');
+
+    function checkEligibility() {
+      const raw = attendanceInput.value;
+      // sanitize and parse
+      const attendance = Number(raw);
+      if (!Number.isFinite(attendance) || attendance < 0 || attendance > 100) {
+        out.className = 'result no';
+        out.textContent = 'Enter a valid attendance percentage between 0 and 100.';
+        return;
+      }
+
+      const hasMedicalCertificate = medicalInput.checked;
+      const isSportsPlayer = sportsInput.checked;
+
+      // Rule: eligible if attendance >=75 OR hasMedicalCertificate OR isSportsPlayer
+      const eligible = (attendance >= 75) || hasMedicalCertificate || isSportsPlayer;
+
+      if (eligible) {
+        out.className = 'result ok';
+        out.textContent = `Eligible — attendance: ${attendance}%, medical: ${hasMedicalCertificate}, sports: ${isSportsPlayer}.`;
+      } else {
+        out.className = 'result no';
+        out.textContent = `Not eligible — attendance: ${attendance}%, medical: ${hasMedicalCertificate}, sports: ${isSportsPlayer}.`;
+      }
+    }
+
+    btn.addEventListener('click', checkEligibility);
+
+    // allow Enter key on number input
+    attendanceInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') checkEligibility();
+    });
+  </script>
+</body>
+</html>

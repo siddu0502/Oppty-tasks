@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Password Strength Check</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    .box { max-width: 400px; margin:auto; padding: 18px; border:1px solid #ccc; border-radius:8px; }
+    input { width:100%; padding:8px; margin:10px 0; }
+    button { padding:8px 14px; cursor:pointer; }
+    .result { margin-top:12px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h2>Password Strength Check</h2>
+    <input type="password" id="password" placeholder="Enter password">
+    <button onclick="checkPassword()">Check Strength</button>
+    <div id="output" class="result"></div>
+  </div>
+
+  <script>
+    function checkPassword() {
+      const pwd = document.getElementById("password").value;
+      const out = document.getElementById("output");
+
+      const hasLength = pwd.length >= 8;
+      const hasUpper = /[A-Z]/.test(pwd);
+      const hasNumber = /[0-9]/.test(pwd);
+      const hasSpecial = /[!@#$%^&*]/.test(pwd);
+
+      if (hasLength && hasUpper && hasNumber && hasSpecial) {
+        out.textContent = "Strong Password ✅";
+        out.style.color = "green";
+      } else {
+        out.textContent = "Weak Password ❌";
+        out.style.color = "red";
+      }
+    }
+  </script>
+</body>
+</html>

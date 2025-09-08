@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Banking System Simulator</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    .box { max-width: 450px; margin:auto; padding:20px; border:1px solid #ccc; border-radius:10px; background:#f9f9f9; }
+    h2 { text-align: center; }
+    input, button { margin: 8px 0; padding: 8px; width: 100%; }
+    button { cursor: pointer; }
+    .log { margin-top: 15px; padding:10px; background:#fff; border:1px solid #ddd; height:150px; overflow-y:auto; }
+    .warning { color: red; font-weight:bold; }
+    .balanceBox { margin-top:15px; padding:10px; font-size:18px; font-weight:bold; background:#eef; border:1px solid #99c; border-radius:5px; }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h2>Banking System</h2>
+
+    <label>Enter Amount:</label>
+    <input type="number" id="amount" placeholder="Enter amount">
+
+    <button onclick="bank('deposit')">Deposit</button>
+    <button onclick="bank('withdraw')">Withdraw</button>
+    <button onclick="bank('check')">Check Balance</button>
+
+    <div id="balanceBox" class="balanceBox">Current Balance: ₹500</div>
+    <div class="log" id="log"></div>
+  </div>
+
+  <script>
+    let balance = 500; // initial balance
+
+    function bank(action) {
+      let amt = Number(document.getElementById("amount").value);
+      let logBox = document.getElementById("log");
+      let balanceBox = document.getElementById("balanceBox");
+
+      if (action === "deposit") {
+        if (amt > 0) {
+          balance += amt;
+          addLog(`✅ Deposited: ₹${amt}`);
+        } else {
+          addLog("❌ Invalid deposit amount.");
+        }
+      }
+
+      else if (action === "withdraw") {
+        if (amt > 0) {
+          if (balance >= amt) {
+            balance -= amt;
+            addLog(`💰 Withdrew: ₹${amt}`);
+          } else {
+            addLog("❌ Withdrawal failed: Insufficient balance!");
+          }
+        } else {
+          addLog("❌ Invalid withdraw amount.");
+        }
+      }
+
+      else if (action === "check") {
+        addLog(`📌 Balance checked: ₹${balance}`);
+      }
+
+      // Update balance display
+      balanceBox.textContent = `Current Balance: ₹${balance}`;
+
+      // Low balance warning
+      if (balance < 100) {
+        addLog(`<span class='warning'>⚠ Low Balance! Only ₹${balance} left.</span>`);
+      }
+    }
+
+    // helper function to add logs
+    function addLog(message) {
+      let logBox = document.getElementById("log");
+      logBox.innerHTML += message + "<br>";
+      logBox.scrollTop = logBox.scrollHeight; // auto-scroll
+    }
+  </script>
+</body>
+</html>

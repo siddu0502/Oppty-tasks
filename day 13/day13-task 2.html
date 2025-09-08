@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task 2</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #f8f9fa;
+    }
+    section {
+      background: #fff;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      max-width: 500px;
+    }
+    h2 {
+      margin-bottom: 15px;
+      color: #333;
+    }
+    input, button {
+      margin: 5px 0;
+      padding: 8px;
+      font-size: 15px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Product Discount Calculator -->
+  <section>
+    <h2>Product Discount Calculator</h2>
+    <input type="text" id="productName" placeholder="Enter Product Name">
+    <input type="number" id="productPrice" placeholder="Enter Price">
+    <button onclick="addProduct()">Add Product</button>
+
+    <h3>Items List:</h3>
+    <ul id="productList"></ul>
+
+    <input type="number" id="discountPercent" placeholder="Discount %">
+    <button onclick="calculateDiscount()">Apply Discount</button>
+    <p id="result"></p>
+  </section>
+
+  <!-- Employee Salary with Bonus -->
+  <section>
+    <h2>Employee Salary with Bonus</h2>
+    <input type="text" id="empName" placeholder="Employee Name">
+    <input type="number" id="empSalary" placeholder="Monthly Salary">
+    <input type="number" id="empBonus" placeholder="Bonus %">
+    <button onclick="calculateSalary()">Calculate Annual Salary</button>
+    <p id="salaryResult"></p>
+  </section>
+
+  <!-- Bank Loan EMI Calculator -->
+  <section>
+    <h2>Bank Loan EMI Calculator</h2>
+    <input type="number" id="loanAmount" placeholder="Loan Amount">
+    <input type="number" id="interestRate" placeholder="Annual Interest Rate %">
+    <input type="number" id="loanYears" placeholder="Loan Tenure (Years)">
+    <button onclick="calculateEMI()">Calculate EMI</button>
+    <p id="emiResult"></p>
+  </section>
+
+  <script>
+    // ---------------- Product Discount ----------------
+    let products = [];
+
+    function addProduct() {
+      let name = document.getElementById("productName").value.trim();
+      let price = parseFloat(document.getElementById("productPrice").value);
+
+      if (!name || isNaN(price) || price <= 0) {
+        alert("Enter valid product and price!");
+        return;
+      }
+
+      products.push({ name, price });
+
+      let li = document.createElement("li");
+      li.textContent = `${name} - ₹${price}`;
+      document.getElementById("productList").appendChild(li);
+
+      document.getElementById("productName").value = "";
+      document.getElementById("productPrice").value = "";
+    }
+
+    function calculateDiscount() {
+      if (products.length === 0) {
+        alert("Add some products first!");
+        return;
+      }
+
+      let discount = parseFloat(document.getElementById("discountPercent").value);
+      if (isNaN(discount) || discount < 0) {
+        alert("Enter a valid discount percentage!");
+        return;
+      }
+
+      let total = products.reduce((sum, item) => sum + item.price, 0);
+      let finalPrice = Math.round(total - (total * discount / 100));
+
+      document.getElementById("result").textContent =
+        `Total before discount: ₹${total} | Final Price after ${discount}% discount: ₹${finalPrice}`;
+    }
+
+    // ---------------- Employee Salary ----------------
+    function calculateSalary() {
+      const empName = document.getElementById("empName").value.trim();
+      const monthlySalary = parseFloat(document.getElementById("empSalary").value);
+      const bonusPercent = parseFloat(document.getElementById("empBonus").value);
+
+      if (!empName || isNaN(monthlySalary) || isNaN(bonusPercent) || monthlySalary <= 0) {
+        document.getElementById("salaryResult").textContent = "⚠️ Fill all details correctly.";
+        return;
+      }
+
+      const base = monthlySalary * 12;
+      const bonus = base * (bonusPercent / 100);
+      const total = base + bonus;
+
+      document.getElementById("salaryResult").textContent =
+        `${empName}'s Annual Salary with Bonus: ₹${total.toFixed(2)}`;
+    }
+
+    // ---------------- Loan EMI ----------------
+    function calculateEMI() {
+      const P = parseFloat(document.getElementById("loanAmount").value);
+      const annualRate = parseFloat(document.getElementById("interestRate").value);
+      const years = parseInt(document.getElementById("loanYears").value);
+
+      if (isNaN(P) || isNaN(annualRate) || isNaN(years) || P <= 0 || annualRate <= 0 || years <= 0) {
+        document.getElementById("emiResult").textContent = "⚠️ Fill all fields with valid values.";
+        return;
+      }
+
+      const R = annualRate / 12 / 100; // monthly rate
+      const N = years * 12;            // number of months
+
+      const EMI = (P * R * Math.pow(1 + R, N)) / (Math.pow(1 + R, N) - 1);
+
+      document.getElementById("emiResult").textContent =
+        `Monthly EMI: ₹${EMI.toFixed(2)}`;
+    }
+  </script>
+</body>
+</html>
