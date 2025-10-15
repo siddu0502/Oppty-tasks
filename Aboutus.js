@@ -184,3 +184,101 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Add your logic here, e.g., open modal or navigate
             });
         });
+
+//companies scrooling //
+document.addEventListener("DOMContentLoaded", () => {
+  const track = document.getElementById("companiesTrack");
+  if (!track) return;
+
+  const slider = track.parentElement;
+  let speed = 1; // pixels per frame
+  let pos = 0;
+  let trackWidth = track.scrollWidth / 2; // since the icons loop infinitely
+
+  function animate() {
+    pos += speed;
+    if (pos >= trackWidth) pos = 0;
+    track.style.transform = `translateX(-${pos}px)`;
+    requestAnimationFrame(animate);
+  }
+
+  // Pause on hover
+  slider.addEventListener("mouseenter", () => (speed = 0));
+  slider.addEventListener("mouseleave", () => (speed = 1));
+
+  animate();
+});
+// children sliding section//
+document.addEventListener('DOMContentLoaded', () => {
+    const track = document.getElementById('image-slider-track');
+    const dotsContainer = document.getElementById('slider-dots');
+
+    if (!track || !dotsContainer) return;
+
+    const slides = Array.from(track.children);
+    const slideCount = slides.length;
+    let currentIndex = 0;
+
+    // --- Create Dots ---
+    // Clear any existing dots first
+    dotsContainer.innerHTML = ''; 
+    for (let i = 0; i < slideCount; i++) {
+        const dot = document.createElement('button');
+        dot.classList.add('dot');
+        dot.setAttribute('aria-label', `Go to image ${i + 1}`);
+        dotsContainer.appendChild(dot);
+    }
+    const dots = Array.from(dotsContainer.children);
+
+    /**
+     * Moves the image track to the specified slide index and updates the active dot.
+     * @param {number} targetIndex - The index of the slide to move to.
+     */
+    const moveToSlide = (targetIndex) => {
+        track.style.transform = `translateX(-${targetIndex * 100}%)`;
+
+        // Update active dot
+        if (dots[currentIndex]) {
+            dots[currentIndex].classList.remove('active');
+        }
+        if (dots[targetIndex]) {
+            dots[targetIndex].classList.add('active');
+        }
+        
+        currentIndex = targetIndex;
+    };
+
+    // --- Attach Event Listeners ---
+    dotsContainer.addEventListener('click', e => {
+        const targetDot = e.target.closest('button.dot');
+        if (!targetDot) return;
+
+        const targetIndex = dots.findIndex(dot => dot === targetDot);
+        if (targetIndex !== -1) {
+            moveToSlide(targetIndex);
+        }
+    });
+
+    // Initialize the first slide and dot
+    if (slideCount > 0) {
+        moveToSlide(0);
+    }
+
+    console.log("Fixed-content image slider initialized.");
+});
+
+// global-partner.js
+document.querySelectorAll('.partner-card').forEach(card => {
+  card.addEventListener('mouseenter', () => {
+    card.style.transform = 'translateY(-10px)';
+  });
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = 'translateY(0)';
+  });
+});
+//footer section
+document.addEventListener('DOMContentLoaded', () => {
+    // This footer is static and does not require any JavaScript for functionality.
+    // This script confirms that the page has loaded correctly.
+    console.log("Footer loaded successfully.");
+});
