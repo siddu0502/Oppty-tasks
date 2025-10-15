@@ -1,616 +1,387 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Oppty BPO - Human Led Transformation</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-  <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oppty BPO | Human-Led Transformation</title>
 
-body, html {
-  height: 100%;
-  overflow: auto;
-  color: white;
-}
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 
-.hero {
-  position: relative;
-  height: 100vh;
-  width: 100%;
-  display: flex;
-  justify-content: auto;
-  align-items: auto;
-  text-align: left;
-  overflow: hidden;
-}
-
-/* Background video */
-#bg-video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  min-width: 100%;
-  min-height: 100%;
-  z-index: -2;
-  object-fit: cover;
-}
-
-/* Dark overlay for readability */
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(10, 10, 10, 0.6);
-  z-index: -1;
-}
-
-/* Content styling */
-.content {
-  max-width: 1000px;
-  padding: 30px;
-}
-
-h1 {
-  font-size: 3rem;
-  font-weight: 700;
-}
-
-h2 span {
-  font-size: 2rem;
-  color: #ff6633;
-  font-weight: 700;
-}
-
-p {
-  margin-top: 15px;
-  line-height: 1.7;
-  font-size: 1.1rem;
-}
-
-.purpose {
-  margin-top: 20px;
-  font-size: 1.1rem;
-  color: #ddd;
-}
-
-/* Stats section */
-.stats {
-  margin-top: 40px;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 30px;
-}
-
-.stats div {
-  text-align: center;
-}
-
-.stats h3 {
-  font-size: 2rem;
-  color: #ffffff;
-}
-
-.stats p {
-  color: #cccccc;
-  font-size: 0.95rem;
-}
-
-/* Responsive design */
-@media (max-width: 768px) {
-  h1 {
-    font-size: 2rem;
-  }
-  h2 span {
-    font-size: 1.5rem;
-  }
-  .stats {
-    flex-direction: column;
-    gap: 15px;
-  }
-}
- 
-/* AWARDS SECTION */
-.awards-section {
-  background: #070707;
-  color: #fff;
-  padding: 90px 0;
-  width: 100%;
-}
-
-.awards-section .container {
-  width: 95%;
-  max-width: 1700px;
-  margin: 0 auto;
-  position: relative;
-  padding: 0 20px;
-}
-
-.awards-section h2 {
-  font-size: 2.8rem;
-  font-weight: 600;
-  margin-bottom: 12px;
-  text-align: left;
-}
-
-.awards-section .view-all {
-  display: inline-block;
-  color: #ff6a00;
-  text-decoration: none;
-  font-weight: 500;
-  margin-bottom: 40px;
-  transition: color 0.3s;
-  font-size: 1.1rem;
-}
-
-.awards-section .view-all:hover {
-  color: #ffffff;
-}
-
-.awards-slider {
-  display: flex;
-  gap: 35px;
-  overflow-x: auto;
-  scroll-behavior: smooth;
-  padding-bottom: 20px;
-}
-
-.award-card {
-  min-width: 420px;
-  height: 420px;
-  background-size: cover;
-  background-position: center;
-  border-radius: 14px;
-  position: relative;
-  flex-shrink: 0;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
-
-.award-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 14px 28px rgba(255, 106, 0, 0.3);
-}
-
-.award-card::before {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 45%;
-  background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
-  border-radius: 0 0 14px 14px;
-}
-
-.award-text {
-  position: absolute;
-  bottom: 20px;
-  left: 18px;
-  right: 18px;
-  font-size: 1rem;
-  color: #e0e0e0;
-  line-height: 1.5;
-}
-
-.slider-controls {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  display: flex;
-  gap: 12px;
-  transform: translateY(-30px);
-}
-
-/* SLIDER BUTTONS (Centered, Clean Look) */
-.slider-controls {
-  position: absolute;
-  bottom: -40px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 16px;
-  z-index: 10;
-}
-
-.slider-controls button {
-  background: #ff6a00;
-  color: #fff;
-  border: none;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  cursor: pointer;
-  font-size: 1.4rem;
-  font-weight: 600;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 4px 10px rgba(255, 106, 0, 0.3);
-  transition: all 0.3s ease;
-}
-
-.slider-controls button:hover {
-  background: #fff;
-  color: #ff6a00;
-  box-shadow: 0 0 18px rgba(255, 106, 0, 0.6);
-  transform: scale(1.1);
-}
-
-/* Optional subtle bar below awards (like WNS page) */
-.awards-section::after {
-  content: "";
-  display: block;
-  height: 2px;
-  width: 85%;
-  background: rgba(255, 255, 255, 0.2);
-  margin: 70px auto 0;
-  border-radius: 2px;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .slider-controls {
-    bottom: -30px;
-  }
-
-  .slider-controls button {
-    width: 42px;
-    height: 42px;
-    font-size: 1.2rem;
-  }
-}
-
-/* NEWS SECTION */
-.news-section {
-  background: #0b0b0b;
-  color: #fff;
-  padding: 100px 0;
-  width: 100%;
-}
-
-.news-section .container {
-  width: 95%;
-  max-width: 1700px;
-  margin: 0 auto;
-  position: relative;
-  padding: 0 20px;
-}
-
-.news-section h2 {
-  font-size: 2.8rem;
-  font-weight: 600;
-  margin-bottom: 12px;
-  text-align: left;
-}
-
-.news-section .view-all {
-  display: inline-block;
-  color: #ff6a00;
-  text-decoration: none;
-  font-weight: 500;
-  margin-bottom: 40px;
-  transition: color 0.3s;
-  font-size: 1.1rem;
-}
-
-.news-section .view-all:hover {
-  color: #ffffff;
-}
-
-.news-slider {
-  display: flex;
-  gap: 32px;
-  overflow-x: auto;
-  scroll-behavior: smooth;
-  padding-bottom: 20px;
-}
-
-.news-card {
-  min-width: 400px;
-  background: #141414;
-  border-radius: 16px;
-  overflow: hidden;
-  flex-shrink: 0;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-  cursor: pointer;
-}
-
-.news-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 25px rgba(255, 106, 0, 0.3);
-}
-
-.news-card img {
-  width: 100%;
-  height: 230px;
-  object-fit: cover;
-}
-
-.news-content {
-  padding: 22px;
-}
-
-.news-content h3 {
-  font-size: 1.2rem;
-  font-weight: 600;
-  margin-bottom: 8px;
-  color: #ffffff;
-}
-
-.news-content p {
-  font-size: 0.95rem;
-  color: #cfcfcf;
-  line-height: 1.5;
-}
-
-/* SLIDER BUTTONS */
-.news-controls {
-  position: absolute;
-  bottom: -50px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 16px;
-  z-index: 10;
-}
-
-.news-controls button {
-  background: #ff6a00;
-  color: #fff;
-  border: none;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  cursor: pointer;
-  font-size: 1.4rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 4px 10px rgba(255, 106, 0, 0.3);
-  transition: all 0.3s ease;
-}
-
-.news-controls button:hover {
-  background: #fff;
-  color: #ff6a00;
-  box-shadow: 0 0 18px rgba(255, 106, 0, 0.6);
-  transform: scale(1.1);
-}
-
-/* SCROLLBAR HIDDEN */
-.news-slider::-webkit-scrollbar {
-  display: none;
-}
-
-/* RESPONSIVE */
-@media (max-width: 768px) {
-  .news-card {
-    min-width: 300px;
-  }
-
-  .news-controls {
-    bottom: -40px;
-  }
-
-  .news-controls button {
-    width: 42px;
-    height: 42px;
-    font-size: 1.2rem;
-  }
-}
-
-
-  </style>
+    <!-- Link to your external CSS file -->
+    <link rel="stylesheet" href="Aboutus.css">
 </head>
 <body>
-  <section class="hero">
-    <video autoplay muted loop playsinline id="bg-video">
-      <source src="https://cdn.pixabay.com/video/2024/08/30/228908_tiny.mp4" type="video/mp4">
-    </video>
 
-    <div class="overlay"></div>
+    <section class="hero-section">
+        
+        <!-- Background Video -->
+        <video autoplay muted loop playsinline id="background-video">
+            <!-- You can replace this src with your own video file -->
+            <source src="assets/228908_tiny.mp4" type="video/mp4">
+        </video>
 
-    <div class="content">
-      <h1>Co-create Smarter Businesses</h1>
-      <h2><span>Human Led.</span></h2>
-      <p>
-        Oppty BPO is a digital-led business transformation and services company 
-        that co-creates smarter businesses with global clients across multiple industries. 
-        We blend deep domain expertise with AI-powered platforms and analytics 
-        to help businesses innovate continuously, scale effortlessly, and adapt swiftly 
-        in a world defined by disruption.
-      </p>
-      <p class="purpose">
-        <strong>Our purpose is clear:</strong> Enabling lasting business value by designing intelligent, 
-        human-led solutions that deliver sustainable outcomes and differentiated impact.
-      </p>
+        <!-- Dark Overlay -->
+        <div class="hero-overlay"></div>
 
-      <div class="stats">
-        <div><h3>3</h3><p>Global Headquarters</p></div>
-        <div><h3>4</h3><p>Continents</p></div>
-        <div><h3>13</h3><p>Countries</p></div>
-        <div><h3>700+</h3><p>Clients</p></div>
-        <div><h3>66,000+</h3><p>Employees</p></div>
-        <div><h3>65</h3><p>Delivery Centers</p></div>
+        <!-- Text Content -->
+        <div class="hero-content">
+            <div class="hero-tagline">
+                AI Powered. Human Led. Future Ready.
+            </div>
+            
+            <h1>Co-create Smarter Businesses</h1>
+            <h2>Human Led.</h2>
+            
+            <p>
+                <strong>Oppty BPO</strong> is a digital-led business transformation and services company that co-creates smarter businesses with more than 700 clients across 10 industries. We blend deep domain excellence, our core differentiation, with AI-powered platforms and analytics to help businesses innovate continuously, scale effortlessly, adapt swiftly and lead resiliently in a world defined by disruption.
+            </p>
+            
+            <p>
+                <strong>Our purpose is clear:</strong> Enabling lasting business value by designing intelligent, human-led solutions that deliver sustainable outcomes and differentiated impact.
+            </p>
+
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <h3>3</h3>
+                    <p>Global Headquarters</p>
+                </div>
+                <div class="stat-item">
+                    <h3>4</h3>
+                    <p>Continents</p>
+                </div>
+                <div class="stat-item">
+                    <h3>13</h3>
+                    <p>Countries</p>
+                </div>
+                <div class="stat-item">
+                    <h3>700+</h3>
+                    <p>Clients</p>
+                </div>
+                <div class="stat-item">
+                    <h3>66,000+</h3>
+                    <p>Employees</p>
+                </div>
+                <div class="stat-item">
+                    <h3>65</h3>
+                    <p>Delivery Centers</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+      <section class="awards-section">
+        <!-- The container for the header keeps it centered -->
+        <div class="content-container">
+            <div class="section-header">
+                <h2>Awards & Recognition</h2>
+                <a href="#" class="link-arrow">View All <span>&nearr;</span></a>
+            </div>
+        </div>
+
+        <!-- The slider track itself is outside the container to allow edge-to-edge scrolling -->
+        <div class="slider-track" id="awards-slider">
+            <!-- SLIDE 1 -->
+            <div class="award-card">
+                <img src="assets/image 1.jpg" alt="Agentic AI Services Award">
+                <div class="card-overlay">
+                    <p>Oppty BPO Positioned in the Leaders’ Quadrant for Agentic AI Services <a href="#" class="link-arrow"><span>&nearr;</span></a></p>
+                </div>
+            </div>
+            <!-- SLIDE 2 -->
+            <div class="award-card">
+                <img src="assets/image 2.jpg" alt="Global Business Transformation Leader Award">
+                 <div class="card-overlay">
+                    <p>Oppty BPO Named a Leader in Intelligent Automation and Process Optimization. <a href="#" class="link-arrow"><span>&nearr;</span></a></p>
+                </div>
+            </div>
+            <!-- SLIDE 3 -->
+            <div class="award-card">
+                <img src="assets/image 3.webp" alt="World's Most Sustainable Companies Award">
+                 <div class="card-overlay">
+                    <p>Oppty BPO Awarded for Excellence in Data-Driven Business Solutions<a href="#" class="link-arrow"><span>&nearr;</span></a></p>
+                </div>
+            </div>
+            <!-- SLIDE 4 -->
+            <div class="award-card">
+                <img src="assets/image 10.jpg" alt="America's Most Reliable Companies Award">
+            
+                 <div class="card-overlay">
+                    <p>Oppty BPO Honored as a Top Performer in AI-Powered Customer Experience. <a href="#" class="link-arrow"><span>&nearr;</span></a></p>
+                </div>
+            </div>
+            <!-- SLIDE 5 -->
+            <div class="award-card">
+                <img src="assets/image 4.jpg" alt="Innovation in Outsourcing Award">
+                 <div class="card-overlay">
+                    <p>Oppty BPO Featured in the 2025 Global Outsourcing Leadership Index.<a href="#" class="link-arrow"><span>&nearr;</span></a></p>
+                </div>
+            </div>
+            <!-- SLIDE 6 -->
+            <div class="award-card">
+                <img src="assets/image 5.webp" alt="Top BPO Provider 2025">
+                 <div class="card-overlay">
+                    <p>Oppty BPO Ranked Among the Fastest-Growing AI-Led BPO Enterprises. <a href="#" class="link-arrow"><span>&nearr;</span></a></p>
+                </div>
+            </div>
+            <!-- SLIDE 7 -->
+            <div class="award-card">
+                <img src="assets/image 6.jpg" alt="Excellence in Customer Service Award">
+                 <div class="card-overlay">
+                    <p>Oppty BPO Acknowledged for Driving Human-Led Digital Innovation. <a href="#" class="link-arrow"><span>&nearr;</span></a></p>
+                </div>
+            </div>
+            <!-- SLIDE 8 -->
+            <div class="award-card">
+                <img src="assets/image 7.webp" alt="Digital Transformation Partner of the Year">
+                 <div class="card-overlay">
+                    <p>Oppty BPO Earns Recognition for Sustainable and Intelligent Operations. <a href="#" class="link-arrow"><span>&nearr;</span></a></p>
+                </div>
+            </div>
+            <!-- SLIDE 9 -->
+            <div class="award-card">
+                <img src="assets/image 8.webp" alt="Best Place to Work in Tech">
+                 <div class="card-overlay">
+                    <p>Oppty BPO Named Industry Leader in Analytics-Driven Business Transformation.<a href="#" class="link-arrow"><span>&nearr;</span></a></p>
+                </div>
+            </div>
+            <!-- SLIDE 10 -->
+            <div class="award-card">
+                <img src="assets/image 9.jpg" alt="Corporate Social Responsibility Award">
+                 <div class="card-overlay">
+                    <p>Oppty BPO Recognized for Outstanding Corporate Social Responsibility <a href="#" class="link-arrow"><span>&nearr;</span></a></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- The container for the controls keeps them centered -->
+        <div class="content-container">
+            <div class="slider-controls">
+                <div class="slider-progress-bar">
+                    <div class="progress-inner" id="awards-progress"></div>
+                </div>
+                <div class="slider-nav">
+                    <button id="awards-prev" aria-label="Previous Slide">&larr;</button>
+                    <button id="awards-next" aria-label="Next Slide">&rarr;</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    
+    <section class="news-section">
+        <!-- The container keeps the header and controls centered -->
+        <div class="content-container">
+            <div class="section-header">
+                <h2>In the News</h2>
+                <a href="#" class="link-arrow">Explore More <span>&nearr;</span></a>
+            </div>
+        </div>
+
+        <!-- The slider track is outside the container for full-width scrolling -->
+        <div class="slider-track" id="news-slider">
+            <a href="#" class="news-card"><h3>Oppty BPO Announces Record-Breaking First Quarter Earnings for Fiscal 2026</h3></a>
+            <a href="#" class="news-card"><h3>Strategic Partnership with TechCorp to Create Global Leader in AI-Powered Operations</h3></a>
+            <a href="#" class="news-card"><h3>How Oppty BPO Delivers End-to-End Procurement Transformation for Global Pharma</h3></a>
+            <a href="#" class="news-card"><h3>Oppty BPO CEO Outlines Vision for Growth and AI Innovation in 2025</h3></a>
+            <a href="#" class="news-card"><h3>Oppty BPO Recognized by Everest Group for Innovation in Digital Customer Experience</h3></a>
+            <a href="#" class="news-card"><h3>Expansion into Eastern Europe with New State-of-the-Art Delivery Center in Warsaw</h3></a>
+            <a href="#" class="news-card"><h3>Oppty BPO Launches New Sustainability Framework to Achieve Net-Zero Emissions by 2040</h3></a>
+            <a href="#" class="news-card"><h3>Client Success Story: Major Retailer Achieves 40% Cost Savings with Oppty BPO</h3></a>
+            <a href="#" class="news-card"><h3>Oppty BPO Appoints New Chief Digital Officer to Accelerate AI Adoption</h3></a>
+            <a href="#" class="news-card"><h3>Keynote by Oppty BPO at World AI Summit Highlights Future of Agentic AI</h3></a>
+        </div>
+
+        <!-- The container keeps the controls centered -->
+        <div class="content-container">
+            <div class="slider-controls">
+                <div class="slider-progress-bar">
+                    <div class="progress-inner" id="news-progress"></div>
+                </div>
+                <div class="slider-nav">
+                    <button id="news-prev" class="slider-button" aria-label="Previous Story">
+                        <span class="arrow left"></span>
+                    </button>
+                    <button id="news-next" class="slider-button" aria-label="Next Story">
+                        <span class="arrow right"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+    </section>
+
+    <!--Clients section-->
+
+      <section class="client-carousel-section">
+    <div class="content-container">
+      <div class="section-header">
+        <h2>Client Success Stories</h2>
+      </div>
+
+      <div class="slider-container">
+        <div class="slider-track" id="client-slider-track">
+
+          <!-- SLIDE 1 -->
+          <div class="client-slide">
+            <div class="client-text">
+              <h3>How a Global Retailer Cut Operational Costs by 40% with Oppty BPO</h3>
+              <p>Discover how we transformed their supply chain and customer service operations using AI-powered analytics and intelligent automation, leading to unprecedented efficiency gains.</p>
+              <a href="#" class="link-arrow">Read More <span>&nearr;</span></a>
+            </div>
+            <div class="video-container">
+              <video class="client-video" playsinline loop muted poster="assets/poster1.jpg">
+                <source src="assets/video1.mp4" type="video/mp4">
+              </video>
+              <div class="play-button"></div>
+              <div class="client-info">
+                <strong>JOHN CARTER</strong>
+                <span>COO, GLOBAL RETAIL INC.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- SLIDE 2 -->
+          <div class="client-slide">
+            <div class="client-text">
+              <h3>Major Healthcare Provider Improves Patient Satisfaction by 35%</h3>
+              <p>By streamlining patient data management and support channels, Oppty BPO helped this provider deliver faster, more accurate, and more empathetic patient care across their network.</p>
+              <a href="#" class="link-arrow">Read More <span>&nearr;</span></a>
+            </div>
+            <div class="video-container">
+              <video class="client-video" playsinline loop muted poster="assets/poster2.jpg">
+                <source src="assets/video2.mp4" type="video/mp4">
+              </video>
+              <div class="play-button"></div>
+              <div class="client-info">
+                <strong>DR. EMILY REID</strong>
+                <span>CHIEF MEDICAL OFFICER, VITA HEALTH SYSTEMS</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- SLIDE 3 -->
+          <div class="client-slide">
+            <div class="client-text">
+              <h3>Leading Airline Achieves 54% Chargeback Win Rate with Oppty BPO</h3>
+              <p>Discover how our specialized dispute resolution team leveraged advanced analytics to transform their chargeback process, recovering significant revenue and reducing fraud.</p>
+              <a href="#" class="link-arrow">Read More <span>&nearr;</span></a>
+            </div>
+            <div class="video-container">
+              <video class="client-video" playsinline loop muted poster="assets/poster3.jpg">
+                <source src="assets/video3.mp4" type="video/mp4">
+              </video>
+              <div class="play-button"></div>
+              <div class="client-info">
+                <strong>SOPHIA VALENTINA</strong>
+                <span>VP OF REVENUE, SKYWARD AIRLINES</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Controls -->
+      <div class="slider-controls">
+        <div class="slider-progress-bar">
+          <div class="progress-inner" id="client-progress"></div>
+        </div>
+        <div class="slider-nav">
+          <button id="client-prev" class="slider-button" aria-label="Previous Client">&larr;</button>
+          <button id="client-next" class="slider-button" aria-label="Next Client">&rarr;</button>
+        </div>
       </div>
     </div>
   </section>
-  <!--Award section-->
 
-  
-  <section class="awards-section">
-  <div class="container">
-    <h2>Awards & Recognition</h2>
-    <a href="#" class="view-all">View All <span>↗</span></a>
+<!--Images hover section-->
 
-    <div class="awards-slider">
-      <div class="award-card" style="background-image: url('assets/image\ 1.jpg');">
-        <div class="award-text">
-          <p>WNS Positioned in the Leaders’ Quadrant of AIM Research’s 2025 PeMa Quadrant for Agentic AI Services ↗</p>
+<section>
+    <div class="fourth-page-container">
+        <div class="fourth-page-content-container">
+            <p class="shape-text">Outsmarting the Future is All About</p>
+            <h2 class="shape-heading">Combining Domain Excellence with Continuous <br> Innovation</h2>
         </div>
-      </div>
-
-      <div class="award-card" style="background-image: url('assets/image\ 2.jpg');">
-        <div class="award-text">
-          <p>Oppty BPO recognized as a Leader in the 2025 Global Business Transformation Quadrant by AIM Research for its excellence in AI-driven outsourcing and digital innovation. ↗</p>
+        <!-- adding images-->
+        <div class="hover-image-row">
+            <div class="hover-image-item">
+                <img src="assets/41-img.jpg" alt="Image-1" />
+                <div class="hover-image-heading">Agentic AI</div>
+                <div class="hover-image-overlay">
+                    <div class="hover-image-overlay-text">
+                        Our workshops are tailored to equip students with the skills needed to excel
+                        in interviews and secure their dream jobs. We focus on practical, hands-on training.
+                    </div>
+                    <div class="hover-image-read-more">
+                        Read More
+                        <i class="fa fa-arrow-up"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="hover-image-item">
+                <img src="assets/42-img.png" alt="Image 2" />
+                <div class="hover-image-heading">Analytics</div>
+                <div class="hover-image-overlay">
+                    <div class="hover-image-overlay-text">
+                        Our campus placement drives offer students the chance to meet potential employers and secure
+                        job offers directly on campus, enhancing their career prospects.
+                    </div>
+                    <div class="hover-image-read-more">
+                        Read More
+                        <i class="fa fa-arrow-up"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="hover-image-item">
+                <img src="assets/43-img.png" alt="Image-3" />
+                <div class="hover-image-heading">Data</div>
+                <div class="hover-image-overlay">
+                    <div class="hover-image-overlay-text">
+                        We collaborate with colleges to enhance their reputation and improve student outcomes through
+                        strategic partnerships and tailored programs.
+                    </div>
+                    <div class="hover-image-read-more">
+                        Read More
+                        <i class="fa fa-arrow-up"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="hover-image-item">
+                <img src="assets/44-img.png" alt="Image-4" />
+                <div class="hover-image-heading">Design Hub</div>
+                <div class="hover-image-overlay">
+                    <div class="hover-image-overlay-text">
+                        We collaborate with colleges to enhance their reputation and improve student outcomes through
+                        strategic partnerships and tailored programs.
+                    </div>
+                    <div class="hover-image-read-more">
+                        Read More
+                        <i class="fa fa-arrow-up"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="hover-image-item">
+                <img src="assets/45-img.png" alt="Image-5" />
+                <div class="hover-image-heading">Hyperautomation</div>
+                <div class="hover-image-overlay">
+                    <div class="hover-image-overlay-text">
+                        Our workshops are tailored to equip students with the skills needed to excel
+                        in interviews and secure their dream jobs. We focus on practical, hands-on training.
+                    </div>
+                    <div class="hover-image-read-more">
+                        Read More
+                        <i class="fa fa-arrow-up"></i>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="award-card" style="background-image: url('assets/image\ 3.webp');">
-        <div class="award-text">
-          <p>Oppty BPO named among the Top 10 Emerging Digital Transformation Partners 2025. ↗</p>
-        </div>
-      </div>
-      <div class="award-card" style="background-image: url('assets/image\ 4.jpg');">
-        <div class="award-text">
-          <p>Recognized by AIM Research for innovation in AI-powered business solutions. ↗</p>
-        </div>
-      </div>
-       <div class="award-card" style="background-image: url('assets/image\ 5.webp');">
-        <div class="award-text">
-          <p>Awarded Best Outsourcing Partner 2025 for operational excellence and client impact. ↗</p>
-        </div>
-      </div>
-       <div class="award-card" style="background-image: url('assets/image\ 6.webp');">
-        <div class="award-text">
-          <p>Honored as a Leading AI-Driven BPO for reshaping customer experience delivery. ↗</p>
-        </div>
-      </div>
-       <div class="award-card" style="background-image: url('assets/image\ 7.webp');">
-        <div class="award-text">
-          <p> Awarded for driving sustainable growth through intelligent outsourcing solutions.↗</p>
-        </div>
-      </div>
-       <div class="award-card" style="background-image: url('assets/image\ 8.webp');">
-        <div class="award-text">
-          <p>Winner of the Innovation in Process Excellence Award 2025. ↗</p>
-        </div>
-      </div>
-       <div class="award-card" style="background-image: url('assets/image\ 9.jpg');">
-        <div class="award-text">
-          <p>Ranked among the Most Trusted BPO Companies by Global Insights. ↗</p>
-        </div>
-      </div>
-       <div class="award-card" style="background-image: url('assets/image\ 10.jpg');">
-        <div class="award-text">
-          <p>Recognized for outstanding performance in Digital Process Transformation. ↗</p>
-        </div>
-      </div>
     </div>
-
-    <div class="slider-controls">
-      <button class="prev">&#10094;</button>
-      <button class="next">&#10095;</button>
-    </div>
-  </div>
-</section>
-<section class="news-section">
-  <div class="container">
-    <h2>In the News</h2>
-    <a href="#" class="view-all">View All <span>↗</span></a>
-
-    <div class="news-slider">
-      <div class="news-card">
-        <img src="assets/news1.jpg" alt="News 1">
-        <div class="news-content">
-          <h3>WNS Announces Fiscal 2026 First Quarter Earnings</h3>
-          <p>WNS delivers consistent growth and strengthens its leadership in digital transformation.</p>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <img src="assets/news2.jpg" alt="News 2">
-        <div class="news-content">
-          <h3>Capgemini to acquire WNS to create a global leader in AI-powered operations</h3>
-          <p>The acquisition will redefine the future of intelligent business services worldwide.</p>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <img src="assets/news3.jpg" alt="News 3">
-        <div class="news-content">
-          <h3>How WNS Procurement Delivers Transformation for Merck KGaA</h3>
-          <p>A collaborative success story in digital procurement transformation.</p>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <img src="assets/news4.jpg" alt="News 4">
-        <div class="news-content">
-          <h3>WNS CEO Keshav Murugesh on 2025 Growth and Innovation</h3>
-          <p>Leadership insights on strategic expansion and human-led innovation.</p>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <img src="assets/news5.jpg" alt="News 5">
-        <div class="news-content">
-          <h3>WNS Acquires Kipi.ai to Expand Data, Analytics and AI Capabilities</h3>
-          <p>A step forward in advancing the company’s agentic AI capabilities.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="news-controls">
-      <button class="prev-news">&#10094;</button>
-      <button class="next-news">&#10095;</button>
-    </div>
-  </div>
-</section>
-
-
-  <script>
-// Optional fade-in animation for text
-document.addEventListener("DOMContentLoaded", () => {
-  const content = document.querySelector(".content");
-  content.style.opacity = 0;
-  setTimeout(() => {
-    content.style.transition = "opacity 1.5s ease";
-    content.style.opacity = 1;
-  }, 500);
-});
-//award section//
-
-const slider = document.querySelector('.awards-slider');
-const nextBtn = document.querySelector('.next');
-const prevBtn = document.querySelector('.prev');
-
-nextBtn.addEventListener('click', () => {
-  slider.scrollBy({ left: 320, behavior: 'smooth' });
-});
-
-prevBtn.addEventListener('click', () => {
-  slider.scrollBy({ left: -320, behavior: 'smooth' });
-});
-  </script>
-
-  <script>
-  const newsSlider = document.querySelector('.news-slider');
-  const nextNews = document.querySelector('.next-news');
-  const prevNews = document.querySelector('.prev-news');
-
-  nextNews.addEventListener('click', () => {
-    newsSlider.scrollBy({ left: 400, behavior: 'smooth' });
-  });
-
-  prevNews.addEventListener('click', () => {
-    newsSlider.scrollBy({ left: -400, behavior: 'smooth' });
-  });
-</script>
-
+</section> 
+    
+    <!-- Link to your external JavaScript file -->
+    <script src="Aboutus.js"></script>
 </body>
 </html>
-  justify-content: center;
-  gap: 30px;
